@@ -2,7 +2,6 @@
  * Copyright the Dolce Dita contributors.
  * All rights reserved.
  */
-
 package dita;
 
 import static org.junit.Assert.*;

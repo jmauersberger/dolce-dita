@@ -13,10 +13,7 @@ import org.jdom2.Element;
  */
 public class DitaTable extends Element {
 
-	/*
-	 * Satisfy the compiler.
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; // Satisfy the compiler.
 
 	// TODO Well, you have to do some real actual work ...
 }

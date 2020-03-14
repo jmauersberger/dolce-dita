@@ -2,18 +2,25 @@
  * Copyright the Dolce Dita contributors.
  * All rights reserved.
  */
-
 package dita;
 
-import static org.junit.Assert.*;
+import java.io.StringWriter;
 
 import org.junit.Test;
 
 @SuppressWarnings({ "nls", "javadoc" })
-public class DitaTopicTest {
+public class DitaTopicTest extends DitaTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testInitial() throws Exception {
+		// PREPARE
+		DitaTopic topic = new DitaTopic("Foo", "foo");
+		StringWriter writer = new StringWriter();
+
+		// RUN
+		topic.write(writer);
+
+		// ASSERT
+		assertResult(writer.toString(), "topic-initial");
 	}
 }

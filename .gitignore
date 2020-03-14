@@ -8,6 +8,9 @@
 # Log file
 *.log
 
+# Generated Test Output
+*.actual
+
 # BlueJ files
 *.ctxt
 
