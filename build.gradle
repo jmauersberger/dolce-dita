@@ -11,9 +11,25 @@ plugins {
     id 'java-library'
 }
 
+sourceSets {
+	// The sources are stored in a 'src' folder rather than in src/main/java
+	main {
+		java {
+			srcDir 'src'
+		}
+	}
+         
+	// The tests are stored in a 'test' folder rather than in src/test/java
+    test {
+		java {
+			srcDir 'test'
+		}
+	}
+}
+
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.jdom:jdom:2.0.6'
+    api 'org.jdom:jdom2:2.0.6'
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:23.0'
@@ -24,7 +40,8 @@ dependencies {
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+    // We use jcenter for resolving your dependencies.
     jcenter()
+    // We can switch to any Maven/Ivy/file repository here, e.g. Maven Central
+    // mavenCentral()
 }
