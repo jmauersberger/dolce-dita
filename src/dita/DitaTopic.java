@@ -4,6 +4,8 @@
  */
 package dita;
 
+import static dita.DitaFactory.*;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -34,7 +36,7 @@ public class DitaTopic extends Document {
 
 	public static String DocType_SystemID = "topic.dtd";
 
-	private Element root, title;
+	private Element root, title, body, active;
 
 	public DitaTopic(String name, String id) {
 		setDocType(new DocType(DocType_Name, DocType_PublicID, DocType_SystemID));
@@ -43,8 +45,24 @@ public class DitaTopic extends Document {
 		root.setAttribute("rev", "0.1");
 		setRootElement(root);
 
-		title = (new Element("title")).addContent(name); //$NON-NLS-1$
+		title = newTitle(name);
 		root.addContent(title);
+
+		body = new Element("body"); //$NON-NLS-1$
+		root.addContent(body);
+		active = body;
+	}
+
+	/**
+	 * Adds a simple text paragraph to the active element.
+	 *
+	 * @param text
+	 *            the text, never <code>null</code>
+	 * @return this
+	 */
+	public DitaTopic addParagraph(String text) {
+		active.addContent(newParagraph(text));
+		return this;
 	}
 
 	/**
