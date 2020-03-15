@@ -8,12 +8,19 @@ import java.io.File;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 
 /**
  * Just some base class for own test helpers.
  */
-@SuppressWarnings("nls")
-class DitaTest {
+@SuppressWarnings({ "nls", "javadoc" })
+public class DitaTest {
+
+	@BeforeClass
+	public static void leadIn() {
+		// test cases may run continuously in the same VM so we better reset all counters
+		DitaId.reset();
+	}
 
 	void assertResult(String current, String path) throws Exception {
 		File base = new File("results");

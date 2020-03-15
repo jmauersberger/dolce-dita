@@ -4,6 +4,8 @@
  */
 package dita;
 
+import static dita.DitaId.*;
+
 import org.jdom2.Element;
 
 /**
@@ -12,8 +14,8 @@ import org.jdom2.Element;
 @SuppressWarnings({ "javadoc", "nls" })
 public class DitaFactory {
 
-	public static Element newTitle(String name) {
-		return (new Element("title")).addContent(name);
+	public static Element newTitle(String text) {
+		return (new Element("title")).addContent(text);
 	}
 
 	public static Element newParagraph() {
@@ -22,5 +24,9 @@ public class DitaFactory {
 
 	public static Element newParagraph(String text) {
 		return newParagraph().setText(text);
+	}
+
+	public static Element newSection() {
+		return new Element("section").setAttribute("id", newId("section"));
 	}
 }

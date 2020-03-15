@@ -30,19 +30,41 @@ public class DitaTopic extends Document {
 
 	private static final long serialVersionUID = 1L; // Satisfy the compiler.
 
-	public static String DocType_Name = "topic";
+	/**
+	 * TODO: Well, you have to do some real actual work
+	 */
+	public static String DocType_Name = "topic"; //$NON-NLS-1$
 
-	public static String DocType_PublicID = "-//OASIS//DTD DITA Topic//EN";
+	/**
+	 * TODO: Well, you have to do some real actual work
+	 */
+	public static String DocType_PublicID = "-//OASIS//DTD DITA Topic//EN"; //$NON-NLS-1$
 
-	public static String DocType_SystemID = "topic.dtd";
+	/**
+	 * TODO: Well, you have to do some real actual work
+	 */
+	public static String DocType_SystemID = "topic.dtd"; //$NON-NLS-1$
 
 	private Element root, title, body, active;
 
+	/*
+	 * True if a section was opened and not yet closed, i.e. the active element is a section.
+	 */
+	private boolean sectionOpen;
+
+	/**
+	 * Create a new {@link DitaTopic} with given name and id.
+	 *
+	 * @param name
+	 *            topic name (its title)
+	 * @param id
+	 *            unique id, never <code>null</code>
+	 */
 	public DitaTopic(String name, String id) {
 		setDocType(new DocType(DocType_Name, DocType_PublicID, DocType_SystemID));
 		root = new Element(DocType_Name);
-		root.setAttribute("id", id);
-		root.setAttribute("rev", "0.1");
+		root.setAttribute("id", id); //$NON-NLS-1$
+		root.setAttribute("rev", "0.1"); //$NON-NLS-1$ //$NON-NLS-2$
 		setRootElement(root);
 
 		title = newTitle(name);
@@ -54,6 +76,21 @@ public class DitaTopic extends Document {
 	}
 
 	/**
+	 * @param text
+	 *            the new topic title
+	 */
+	public void setTitle(String text) {
+		title.setText(text);
+	}
+
+	/**
+	 * @return the current topic title
+	 */
+	public String getTitle() {
+		return title.getText();
+	}
+
+	/**
 	 * Adds a simple text paragraph to the active element.
 	 *
 	 * @param text
@@ -62,6 +99,30 @@ public class DitaTopic extends Document {
 	 */
 	public DitaTopic addParagraph(String text) {
 		active.addContent(newParagraph(text));
+		return this;
+	}
+
+	public DitaTopic addSection(String text) {
+		openSection(text);
+		closeSection();
+		return this;
+	}
+
+	public DitaTopic openSection(String text) {
+		if (sectionOpen) {
+			closeSection();
+		}
+
+		Element section = newSection().addContent(newTitle(text));
+		body.addContent(section);
+		sectionOpen = true;
+		active = section;
+		return this;
+	}
+
+	public DitaTopic closeSection() {
+		active = body;
+		sectionOpen = false;
 		return this;
 	}
 
