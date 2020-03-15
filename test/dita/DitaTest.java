@@ -8,7 +8,7 @@ import java.io.File;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 
 /**
  * Just some base class for own test helpers.
@@ -16,9 +16,9 @@ import org.junit.BeforeClass;
 @SuppressWarnings({ "nls", "javadoc" })
 public class DitaTest {
 
-	@BeforeClass
-	public static void leadIn() {
-		// test cases may run continuously in the same VM so we better reset all counters
+	@Before
+	public void before() {
+		// test cases may run continuously and in undefined order in the same VM so we better reset all counters
 		DitaId.reset();
 	}
 

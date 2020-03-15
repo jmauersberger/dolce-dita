@@ -102,12 +102,44 @@ public class DitaTopic extends Document {
 		return this;
 	}
 
+	/**
+	 * Adds a simple image figure to the active element.
+	 *
+	 * @param text
+	 *            the figure text, never <code>null</code>
+	 * @param href
+	 *            the image URL, absolute or relative
+	 * @return this
+	 */
+	public DitaTopic addImage(String text, String href) {
+		Element figure = newFigure().addContent(newTitle(text));
+		Element imgage = newImage().setAttribute("href", href); //$NON-NLS-1$
+		figure.addContent(imgage);
+		active.addContent(figure);
+		return this;
+	}
+
+	/**
+	 * Adds a new empty section.
+	 *
+	 * @param text
+	 *            section text/title
+	 * @return thus
+	 */
 	public DitaTopic addSection(String text) {
 		openSection(text);
 		closeSection();
 		return this;
 	}
 
+	/**
+	 * Opens a new section. The new section becomes the "active" element until it is closed.
+	 *
+	 * @param text
+	 *            section text/title
+	 * @return this
+	 * @see #closeSection()
+	 */
 	public DitaTopic openSection(String text) {
 		if (sectionOpen) {
 			closeSection();
@@ -120,6 +152,11 @@ public class DitaTopic extends Document {
 		return this;
 	}
 
+	/**
+	 * Closes any open section. Does nothing if there is no open section.
+	 *
+	 * @return this
+	 */
 	public DitaTopic closeSection() {
 		active = body;
 		sectionOpen = false;

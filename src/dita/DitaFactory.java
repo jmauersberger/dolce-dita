@@ -29,4 +29,12 @@ public class DitaFactory {
 	public static Element newSection() {
 		return new Element("section").setAttribute("id", newId("section"));
 	}
+
+	public static Element newFigure() {
+		return new Element("fig").setAttribute("id", newId("figure"));
+	}
+
+	public static Element newImage() {
+		return new Element("image").setAttribute("id", newId("image"));
+	}
 }

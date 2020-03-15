@@ -65,6 +65,8 @@ public class DitaTopicTest extends DitaTest {
 	public void testTopicSectionWithParagraphs() throws Exception {
 		// PREPARE
 		DitaTopic topic = new DitaTopic("Foo", "foo");
+		topic.addSection("What is Lorem Ipsum?");
+		topic.openSection("Why do we use it?"); // test open without close
 		topic.openSection("The standard Lorem Ipsum passage, used since the 1500s");
 		topic.addParagraph(
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
@@ -73,6 +75,28 @@ public class DitaTopicTest extends DitaTest {
 		topic.addParagraph(
 			"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.");
 		// its not required to close the section
+
+		StringWriter writer = new StringWriter();
+
+		// RUN
+		topic.write(writer);
+
+		// ASSERT
+		assertResult(writer.toString(), name.getMethodName());
+	}
+
+	@Test
+	public void testTopicSectionWithImages() throws Exception {
+		// PREPARE
+		DitaTopic topic = new DitaTopic("Foo", "foo");
+		topic.openSection("The standard Lorem Ipsum passage, used since the 1500s");
+		topic.addParagraph(
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+		topic.closeSection();
+		topic.openSection("The Lorem Ipsum Wikipedia Article");
+		topic.addImage("Lorem Ipsum Designs on Wikipedia",
+			"https://en.wikipedia.org/wiki/Lorem_ipsum#/media/File:Lorem_ipsum_design.svg");
+		topic.closeSection();
 
 		StringWriter writer = new StringWriter();
 
