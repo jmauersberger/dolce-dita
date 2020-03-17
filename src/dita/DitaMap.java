@@ -90,7 +90,7 @@ public class DitaMap extends DitaDocument {
 	 * @param path
 	 *            topic reference
 	 * @return this
-	 * @see #closeSection()
+	 * @see #closeTopic()
 	 */
 	public DitaDocument openTopic(String path) {
 		Element topicref = newTopicRef(path);
@@ -104,7 +104,7 @@ public class DitaMap extends DitaDocument {
 	 *
 	 * @return this
 	 */
-	public DitaDocument closeSection() {
+	public DitaDocument closeTopic() {
 		active = body;
 		return this;
 	}

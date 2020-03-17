@@ -45,4 +45,38 @@ public class DitaMapTest extends DitaTest {
 		assertResult(writer, name);
 		assertEquals("Bar Foo Bar", map.getTitle());
 	}
+
+	@Test
+	public void testMapSimpleTopic() throws Exception {
+		// PREPARE
+		DitaMap map = new DitaMap("Bar", "bar");
+		map.addTopic("content/foo.dita");
+		StringWriter writer = new StringWriter();
+
+		// RUN
+		map.write(writer);
+
+		// ASSERT
+		assertResult(writer, name);
+	}
+
+	@Test
+	public void testMapMultipleTopics() throws Exception {
+		// PREPARE
+		DitaMap map = new DitaMap("Bar", "bar");
+		map.addTopic("content/foo.dita");
+		map.openTopic("content/bar.dita");
+		map.addTopic("content/sub/bar.dita");
+		map.addTopic("content/sub/bar.dita");
+		map.addTopic("content/sub/foo-bar.dita");
+		map.closeTopic();
+
+		StringWriter writer = new StringWriter();
+
+		// RUN
+		map.write(writer);
+
+		// ASSERT
+		assertResult(writer, name);
+	}
 }
