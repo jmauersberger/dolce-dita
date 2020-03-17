@@ -40,7 +40,7 @@ public class DitaScriptingTest {
 
 	@Parameters(name = "{0}")
 	public static Collection<Object[]> getTestParameter() throws Exception {
-		return findScripts("scripts", null);
+		return findScripts("scripts", (f) -> f.getName().endsWith(".js"));
 	}
 
 	static Collection<Object[]> findScripts(String scriptsPath, FileFilter filter) throws Exception {

@@ -21,14 +21,14 @@ public class DitaTopicTest extends DitaTest {
 	@Test
 	public void testTopicInitial() throws Exception {
 		// PREPARE
-		DitaTopic topic = new DitaTopic("Foo", "foo");
+		DitaDocument topic = new DitaTopic("Foo", "foo");
 		StringWriter writer = new StringWriter();
 
 		// RUN
 		topic.write(writer);
 
 		// ASSERT
-		assertResult(writer.toString(), name.getMethodName());
+		assertResult(writer, name);
 	}
 
 	@Test
@@ -42,7 +42,7 @@ public class DitaTopicTest extends DitaTest {
 		topic.write(writer);
 
 		// ASSERT
-		assertResult(writer.toString(), name.getMethodName());
+		assertResult(writer, name);
 		assertEquals("Foo Bar Foo", topic.getTitle());
 	}
 
@@ -58,7 +58,7 @@ public class DitaTopicTest extends DitaTest {
 		topic.write(writer);
 
 		// ASSERT
-		assertResult(writer.toString(), name.getMethodName());
+		assertResult(writer, name);
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class DitaTopicTest extends DitaTest {
 		topic.write(writer);
 
 		// ASSERT
-		assertResult(writer.toString(), name.getMethodName());
+		assertResult(writer, name);
 	}
 
 	@Test
@@ -104,6 +104,6 @@ public class DitaTopicTest extends DitaTest {
 		topic.write(writer);
 
 		// ASSERT
-		assertResult(writer.toString(), name.getMethodName());
+		assertResult(writer, name);
 	}
 }

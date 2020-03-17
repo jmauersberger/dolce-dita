@@ -37,4 +37,8 @@ public class DitaFactory {
 	public static Element newImage() {
 		return new Element("image").setAttribute("id", newId("image"));
 	}
+
+	public static Element newTopicRef(String path) {
+		return new Element("topicref").setAttribute("href", path);
+	}
 }
