@@ -15,5 +15,32 @@
             <image href="https://www.oasis-open.org/sites/www.oasis-open.org/files/logo.png"
                 id="image-1"/>
         </fig>
+        <table frame="all" rowsep="1" colsep="1" id="table-1">
+            <title>Lorem Ipsum</title>
+            <tgroup cols="2">
+                <colspec colname="c1" colnum="1" colwidth="1*"/>
+                <colspec colname="c2" colnum="2" colwidth="1*"/>
+                <thead>
+                    <row>
+                        <entry>Lorem</entry>
+                        <entry>Ipsum</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>Lorem ipsum dolor sit amet</entry>
+                        <entry> consectetur adipiscing elit</entry>
+                    </row>
+                    <row>
+                        <entry>Lorem ipsum dolor sit amet</entry>
+                        <entry> consectetur adipiscing elit</entry>
+                    </row>
+                    <row>
+                        <entry>Lorem ipsum dolor sit amet</entry>
+                        <entry> consectetur adipiscing elit</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
     </body>
 </topic>

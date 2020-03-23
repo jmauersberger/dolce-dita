@@ -1,0 +1,24 @@
+<table frame="all" rowsep="1" colsep="1" id="table-0">
+  <title>Bar</title>
+  <tgroup cols="7">
+    <colspec colname="c0" colnum="0" colwidth="1*"></colspec>
+    <colspec colname="c1" colnum="1" colwidth="1*"></colspec>
+    <colspec colname="c2" colnum="2" colwidth="1.1*"></colspec>
+    <colspec colname="c3" colnum="3" colwidth="2.2*"></colspec>
+    <colspec colname="c4" colnum="4" colwidth="1*"></colspec>
+    <colspec colname="c5" colnum="5" colwidth="1*"></colspec>
+    <colspec colname="c6" colnum="6" colwidth="3.2*"></colspec>
+    <thead>
+      <row>
+        <entry>A</entry>
+        <entry>B</entry>
+        <entry>C</entry>
+        <entry>D</entry>
+        <entry>E</entry>
+        <entry>F</entry>
+        <entry>G</entry>
+      </row>
+    </thead>
+    <tbody></tbody>
+  </tgroup>
+</table>
